@@ -7,7 +7,7 @@ const useDarkMode = (key, initialValue) => {
     const toggleDarkMode = e => {
         e.preventDefault();
 
-        return darkModeEnabled ? setDarkModeOn(false) : setDarkModeOn(true);
+        return setDarkModeOn ? setDarkModeOn(false) : setDarkModeOn(true);
     };
 
     useEffect(() => {
