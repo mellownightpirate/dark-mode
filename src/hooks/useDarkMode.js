@@ -1,24 +1,33 @@
-import useLocalStorage from './useLocalStorage';
 import {useEffect} from 'react';
+import {useLocalStorage} from './useLocalStorage';
 
-const useDarkMode = (key, initialValue) => {
-    const [darkModeOn, setDarkModeOn] = useLocalStorage(key, initialValue);
-
-    const toggleDarkMode = e => {
-        e.preventDefault();
-
-        return setDarkModeOn ? setDarkModeOn(false) : setDarkModeOn(true);
-    };
-
+export const useDarkMode = (initialValue) => {
+    const [darkModeOn, setDarkModeOn] = useLocalStorage(initialValue);
+    // debugger
     useEffect(() => {
-        if (darkModeOn === true) {
-            document.body.classList.add("dark-mode");
-        } else {
-            document.body.classList.remove("dark-mode");
-        }
-    }, [darkModeOn]);
+darkModeOn
+? document.body.classList.add("dark-mode")
+: document.body.classList.remove("dark-mode")
 
-  return [darkModeOn, setDarkModeOn, toggleDarkMode];
-};
+    }, [darkModeOn])
+    return [darkModeOn, setDarkModeOn]
+}
 
-export default useDarkMode;
+//     const toggleDarkMode = e => {
+//         e.preventDefault();
+
+//         return setDarkModeOn ? setDarkModeOn(false) : setDarkModeOn(true);
+//     };
+
+//     useEffect(() => {
+//         if (darkModeOn === true) {
+//             document.body.classList.add("dark-mode");
+//         } else {
+//             document.body.classList.remove("dark-mode");
+//         }
+//     }, [darkModeOn]);
+
+//   return [darkModeOn, setDarkModeOn];
+// };
+
+// export default useDarkMode;
